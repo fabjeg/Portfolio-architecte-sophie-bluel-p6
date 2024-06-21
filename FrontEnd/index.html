@@ -28,7 +28,18 @@
       rel="stylesheet"
       href="../FrontEnd/assets/css/style.css"
     />
-    <script src="./assets/js/index.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f30c0be967.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="./assets/js/index.js"
+      defer
+    ></script>
+    <script
+      src="../FrontEnd/assets/js/modal.js"
+      defer
+    ></script>
   </head>
   <body>
     <header>
@@ -37,7 +48,13 @@
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <li>login</li>
+          <li>
+            <a
+              href="../FrontEnd/login.html"
+              class="login"
+              >Login</a
+            >
+          </li>
           <li>
             <img
               src="./assets/icons/instagram.png"
@@ -75,13 +92,98 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
-        <div
-          class="filters"
-          >
-          <button id="0">Tous</button>
+        <div class="container">
+          <h2>Mes Projets</h2>
+          <div id="affichage">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <a
+              href="#modal"
+              class="js-modal"
+              >Modifier</a
+            >
+            <aside
+              id="modal"
+              class="modal affichage"
+              aria-hidden="true"
+              role="dialog"
+              aria-labelledby="title-modal"
+              style="display: none"
+            >
+              <div class="modal-wrapper js-modal-stop">
+                <div class="delete">
+                  <i class="fa-solid fa-xmark js-modal-close"></i>
+                </div>
+                <h3 id="title-modal">Galerie photo</h3>
+                <!-- suppression des photos -->
+                <div class="add-pictures"></div>
+                <!-- ajout des photos -->
+                <div class="border"></div>
+                <div class="input-modal">
+                  <input
+                    type="submit"
+                    value="Ajouter une photo"
+                  />
+                </div>
+              </div>
+              <div class="modal-addpictures js-modal-stop-2">
+                <span><i class="fa-solid fa-xmark fa-xmark2"></i></span>
+                <span><i class="fa-solid fa-arrow-left"></i></span>
+                <h3>Ajout photo</h3>
+                <form>
+                  <div class="input-modal container-file">
+                    <span><i class="fa-solid fa-image"></i></span>
+                    <label
+                      for="file"
+                      class="label2"
+                      >+Ajouter photo</label
+                    >
+                    <input
+                      class="input2"
+                      type="file"
+                      id="file"
+                      name="image"
+                    />
+                    <img
+                      src="#"
+                      alt="aperçus de l'image"
+                    />
+                    <p>jpg, png: 4 mo max</p>
+                  </div>
+
+                  <label
+                    class="label-title"
+                    for="title"
+                    >Titre</label
+                  >
+                  <input
+                    class="input-titre"
+                    type="text"
+                    id="title"
+                    name="title"
+                  />
+                  <label
+                    class="label-category"
+                    for="category"
+                    >Catégorie</label
+                  >
+                  <select
+                    class="select-category"
+                    name="category"
+                    id="category"
+                  ></select>
+                  <div class="border-2"></div>
+                  <div class="container-button">
+                    <button class="button-valider">Valider</button>
+                  </div>
+                </form>
+              </div>
+            </aside>
           </div>
-        <div class="gallery">
+        </div>
+        <div class="filters">
+          <button id="0">Tous</button>
+        </div>
+        <div class="gallery"></div>
       </section>
       <section id="contact">
         <h2>Contact</h2>

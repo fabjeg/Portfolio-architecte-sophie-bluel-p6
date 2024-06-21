@@ -17,12 +17,11 @@ document
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-
+        const token = data.token;
+        console.log(token);
         window.location.href = "../frontEnd/index.html";
       } else if (response.status === 404) {
-        messageErreur.textContent =
-          "utilisateur ou mot de passe incorrectes.  ";
+        messageErreur.textContent = "utilisateur ou mot de passe incorrect.  ";
       }
     } catch (e) {
       console.error("Fetch error", e);

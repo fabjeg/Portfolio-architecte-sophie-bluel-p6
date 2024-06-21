@@ -292,3 +292,248 @@ button:hover {
   gap: 10px;
   margin: 51px;
 }
+.login {
+  padding: 0 10px;
+  text-decoration: none;
+  color: black;
+  font: inherit;
+  vertical-align: baseline;
+}
+.login:hover {
+  color: #b1663c;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.container a {
+  margin-left: 10px;
+  position: relative;
+  bottom: 14px;
+  text-decoration: none;
+  color: black;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+}
+
+.fa-regular {
+  position: relative;
+  bottom: 14px;
+  margin-left: 20px;
+}
+/*modal*/
+.modal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+.modal-wrapper {
+  border: 1px solid white;
+  overflow: auto;
+  width: 630px;
+  height: 688px;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vw - 20px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.title-modal,
+h3 {
+  font-family: Work Sans;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30.5px;
+  text-align: center;
+}
+.title-modal {
+  margin-top: 160px;
+}
+.delete {
+  display: flex;
+  justify-content: flex-end;
+}
+.input-modal {
+  display: flex;
+}
+.input-modal input {
+  border: none;
+  width: 237px;
+  height: 36px;
+}
+.add-pictures {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+}
+.add-pictures img {
+  width: 76.86px;
+  height: 102.57px;
+  display: block;
+  object-fit: cover;
+}
+.fa-trash-can {
+  border: 2px solid black;
+  width: 15px;
+  height: 17px;
+  position: relative;
+  left: 55px;
+  top: 25px;
+  color: #fff;
+  background-color: black;
+  text-align: center;
+}
+.border {
+  width: 420px;
+  border-top: 1px solid #b3b3b3;
+  margin-left: 105px;
+  margin-top: 67.3px;
+  margin-bottom: 38px;
+}
+/*second modal*/
+.modal-addpictures {
+  display: none;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  overflow: auto;
+  width: 630px;
+  height: 688px;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vw - 20px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+}
+.fa-arrow-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.fa-xmark2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+  width: 80%;
+  gap: 10px;
+  margin-left: 100px;
+}
+.container-file {
+  background-color: #e8f1f6;
+  width: 420px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+  margin-top: 36px;
+}
+
+.label {
+  background-color: #cbd6dc;
+}
+.input2 {
+  display: none;
+}
+.label2 {
+  width: 173px;
+  height: 36px;
+  text-align: center;
+  background-color: #cbd6dc;
+  border-radius: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  text-align: center;
+}
+.fa-image {
+  font-size: 68.14px;
+  top: 9.5px;
+  left: 3.93px;
+  color: #b9c5cc;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.container-file,
+p {
+  font-family: Work Sans;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 11.73px;
+  text-align: center;
+  color: #444444;
+}
+.label-title {
+  margin-top: 30px;
+}
+.input-titre {
+  width: 420px;
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+}
+.label-category {
+  margin-top: 21px;
+}
+.select-category {
+  width: 420px;
+  height: 51px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+  background-color: #fff;
+  margin-bottom: 47px;
+}
+.border-2 {
+  width: 420px;
+  border-top: 1px solid #b3b3b3;
+  margin-bottom: 38px;
+}
+.button-valider {
+  width: 237px;
+  height: 36px;
+  background: #a7a7a7;
+  color: #fff;
+  border: none;
+  margin: 0px;
+}
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin-right: 80px;
+}
+.container-button:hover {
+  display: none;
+}
+.valide {
+  background-color: #1d6154;
+}
