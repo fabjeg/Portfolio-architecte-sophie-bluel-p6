@@ -298,14 +298,16 @@ footer {
   background-color: white;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-top: 163px;
+  margin-top: 168px;
 }
 li {
   font-family: "Work Sans";
   font-weight: 300;
   font-size: 14px;
 }
-
+li a {
+  text-decoration: none;
+}
 p {
   color: red;
 }

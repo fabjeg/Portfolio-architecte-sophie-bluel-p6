@@ -84,7 +84,7 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
+  margin: 0px;
   padding: 0;
   border: 0;
   font-size: 100%;
@@ -137,7 +137,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 110px 0px 50px;
 }
 section {
   margin: 50px 0;
@@ -199,6 +199,12 @@ li:hover {
 
 #introduction p {
   margin-bottom: 0.5em;
+  width: 70%;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  text-align: left;
 }
 #portfolio h2 {
   text-align: center;
@@ -280,7 +286,7 @@ button {
   background-color: #fffef8;
   margin-left: 10px;
 }
-button:hover {
+.filters button:hover {
   background-color: #1d6154;
   color: white;
 }
@@ -357,20 +363,21 @@ h3 {
   line-height: 30.5px;
   text-align: center;
 }
-.title-modal {
-  margin-top: 160px;
-}
+
 .delete {
   display: flex;
   justify-content: flex-end;
 }
-.input-modal {
-  display: flex;
+.container-pictures {
+  width: 100%;
+  height: 70%;
+  overflow: auto;
 }
 .input-modal input {
   border: none;
   width: 237px;
   height: 36px;
+  margin: 0;
 }
 .add-pictures {
   display: grid;
@@ -378,6 +385,7 @@ h3 {
   gap: 35px;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 .add-pictures img {
   width: 76.86px;
@@ -396,13 +404,19 @@ h3 {
   background-color: black;
   text-align: center;
 }
+.input-modal {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 0 15px;
+}
 .border {
   width: 420px;
   border-top: 1px solid #b3b3b3;
-  margin-left: 105px;
+  margin-left: 18%;
   margin-top: 67.3px;
   margin-bottom: 38px;
 }
+
 /*second modal*/
 .modal-addpictures {
   display: none;
@@ -457,8 +471,11 @@ form {
 .label {
   background-color: #cbd6dc;
 }
-.input2 {
+.input2,
+.img {
   display: none;
+  width: 150px;
+  height: 150px;
 }
 .label2 {
   width: 173px;
@@ -516,8 +533,10 @@ p {
 .border-2 {
   width: 420px;
   border-top: 1px solid #b3b3b3;
-  margin-bottom: 38px;
+  display: flex;
+  justify-content: center;
 }
+
 .button-valider {
   width: 237px;
   height: 36px;
@@ -525,15 +544,49 @@ p {
   color: #fff;
   border: none;
   margin: 0px;
+  margin-top: 20px;
+}
+.btnValider:hover {
+  background-color: #1d6154;
+  color: white;
 }
 .container-button {
   display: flex;
   justify-content: center;
   margin-right: 80px;
 }
-.container-button:hover {
-  display: none;
-}
+
 .valide {
   background-color: #1d6154;
+}
+.edition {
+  height: 59px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.edition body {
+  margin: 0;
+}
+.text {
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.77px;
+  text-align: center;
+  color: #fff;
+}
+
+.edition .icon {
+  position: relative;
+  top: 0px;
+}
+#affichage1 {
+  background: #000000;
 }

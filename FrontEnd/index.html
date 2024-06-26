@@ -42,6 +42,15 @@
     ></script>
   </head>
   <body>
+    <div
+      class="edition"
+      id="affichage1"
+    >
+      <div class="text">
+        <i class="fa-regular fa-pen-to-square icon"></i>
+      </div>
+      <div class="text">Mode édition</div>
+    </div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
@@ -72,7 +81,7 @@
             alt=""
           />
         </figure>
-        <article>
+        <article class="article">
           <h2>Designer d'espace</h2>
           <p>
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
@@ -115,7 +124,9 @@
                 </div>
                 <h3 id="title-modal">Galerie photo</h3>
                 <!-- suppression des photos -->
-                <div class="add-pictures"></div>
+                <div class="container-pictures">
+                  <div class="add-pictures"></div>
+                </div>
                 <!-- ajout des photos -->
                 <div class="border"></div>
                 <div class="input-modal">
@@ -144,6 +155,7 @@
                       name="image"
                     />
                     <img
+                      class="img"
                       src="#"
                       alt="aperçus de l'image"
                     />
@@ -171,9 +183,8 @@
                     name="category"
                     id="category"
                   ></select>
-                  <div class="border-2"></div>
-                  <div class="container-button">
-                    <button class="button-valider">Valider</button>
+                  <div class="border-2">
+                    <div><button class="button-valider">Valider</button></div>
                   </div>
                 </form>
               </div>

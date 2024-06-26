@@ -18,7 +18,7 @@ document
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
-        console.log(token);
+        localStorage.setItem("token", token);
         window.location.href = "../frontEnd/index.html";
       } else if (response.status === 404) {
         messageErreur.textContent = "utilisateur ou mot de passe incorrect.  ";

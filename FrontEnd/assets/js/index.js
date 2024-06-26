@@ -36,7 +36,7 @@ async function displayCategorysBtn() {
     const btn = document.createElement("button");
     btn.textContent = category.name;
     btn.id = category.id;
-    document.querySelector("div.filters").appendChild(btn);
+    document.querySelector(".filters").appendChild(btn);
   });
 }
 displayCategorysBtn();

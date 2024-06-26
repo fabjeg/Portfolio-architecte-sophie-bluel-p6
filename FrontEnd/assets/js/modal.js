@@ -1,5 +1,40 @@
 let modal = null;
 
+const token = localStorage.getItem("token");
+const isAdmin = token?.length > 0 ? true : false;
+const affichage = document.querySelector("#affichage");
+const affichage1 = document.querySelector("#affichage1");
+const login = document.querySelector(".login");
+
+//ajouter une photo (ne fonctionne pas !!!!!)
+const form = document.querySelector(".modal-addpictures form");
+const title = document.querySelector(".modal-addpictures #title");
+const category = document.querySelector(".modal-addpictures #category");
+
+//affiche les images dans le modale
+const addPictures = document.querySelector(".add-pictures");
+
+//modale ajout photo
+const btnAjoutPhoto = document.querySelector(".input-modal input");
+const modaladdpictures = document.querySelector(".modal-addpictures");
+const modalImg = document.querySelector(".modal-wrapper");
+const arrowReturn = document.querySelector(".fa-arrow-left");
+const deleteMark = document.querySelector(".modal-addpictures .fa-xmark");
+const btnValider = document.querySelector(".button-valider");
+console.log(btnValider);
+
+//insérer les images
+
+const previewImg = document.querySelector(".container-file img");
+const inputFile = document.querySelector(".container-file input");
+const labelFile = document.querySelector(".container-file label");
+const iconeFile = document.querySelector(".container-file .fa-image");
+const pFile = document.querySelector(".container-file p");
+//déconnexion
+const headers = document.querySelector("header");
+const filter = document.querySelector(".filters");
+const btn_Filter = document.querySelector(".filters button");
+
 const openModal = function (e) {
   e.preventDefault();
   const target = document.querySelector(e.target.getAttribute("href"));
@@ -13,6 +48,7 @@ const openModal = function (e) {
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
 };
+
 //ferme le modal
 const closeModal = function (e) {
   if (modal === null) return;
@@ -44,13 +80,9 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-//affiche les images dans le modale
-const addPictures = document.querySelector(".add-pictures");
-
 async function pictureModal() {
   addPictures.innerHTML = "";
   const modalPictures = await getworks();
-  console.log(modalPictures);
   modalPictures.forEach((picture) => {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
@@ -66,18 +98,16 @@ async function pictureModal() {
   });
   deletePictures();
 }
-pictureModal();
 
 // supprime les images
 function deletePictures() {
-  const token = localStorage.getItem("token");
-  if (!token) {
+  if (!isAdmin) {
     console.error("token non trouvé, impossible de continuer. ");
     return;
   }
   const trashAll = document.querySelectorAll(".fa-trash-can");
   trashAll.forEach((trash) => {
-    trash.addEventListener("click", (e) => {
+    trash.addEventListener("click", async (e) => {
       const id = trash.id;
       const init = {
         method: "DELETE",
@@ -86,28 +116,21 @@ function deletePictures() {
           Authorization: `Bearer ${token}`,
         },
       };
-      fetch(`http://localhost:5678/api/works/ ${id}`, init)
-        .then((response) => {
-          if (!response.ok) {
-            console.log("le delete n'a pas marché !");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("le delete à fonctioné :", data);
+      try {
+        const response = await fetch(
+          `http://localhost:5678/api/works/${id}`,
+          init
+        );
+        if (response.ok) {
           getworks();
           pictureModal();
-        });
+        }
+      } catch (error) {
+        console.log("image delete error", error);
+      }
     });
   });
 }
-
-//modale ajout photo
-const btnAjoutPhoto = document.querySelector(".input-modal input");
-const modaladdpictures = document.querySelector(".modal-addpictures");
-const modalImg = document.querySelector(".modal-wrapper");
-const arrowReturn = document.querySelector(".fa-arrow-left");
-const deleteMark = document.querySelector(".modal-addpictures .fa-xmark");
 
 function displayAddModall() {
   btnAjoutPhoto.addEventListener("click", () => {
@@ -124,15 +147,7 @@ function displayAddModall() {
   const modalstop = document.querySelector(".js-modal-stop-2");
   modalstop.addEventListener("click", stopPropagation);
 }
-displayAddModall();
 
-//insérer les images
-
-const previewImg = document.querySelector(".container-file img");
-const inputFile = document.querySelector(".container-file input");
-const labelFile = document.querySelector(".container-file label");
-const iconeFile = document.querySelector(".container-file .fa-image");
-const pFile = document.querySelector(".container-file p");
 inputFile.addEventListener("change", () => {
   const file = inputFile.files[0];
 
@@ -150,43 +165,37 @@ inputFile.addEventListener("change", () => {
     reader.readAsDataURL(file);
   }
 });
-
-// affichages des catégories
 async function displayCategoryModal() {
   const select = document.querySelector("select");
-  const categories = await arrayCategorys();
-  categories.forEach((categorie) => {
-    const option = document.createElement("option");
-    if (option === false) {
-      option.textContent = "";
-    } else {
-      option.value = categorie.id;
-      option.textContent = categorie.name;
-      select.appendChild(option);
+  let categoriesPopulated = false;
+  select.innerHTML = "";
+  select.addEventListener("click", async () => {
+    if (!categoriesPopulated) {
+      const categories = await arrayCategorys();
+      categories.forEach((categorie) => {
+        const option = document.createElement("option");
+        option.value = categorie.id;
+        option.textContent = categorie.name;
+        select.appendChild(option);
+      });
+      categoriesPopulated = true;
     }
   });
 }
-displayCategoryModal();
 
-//ajouter une photo (ne fonctionne pas !!!!!)
-const form = document.querySelector(".modal-addpictures form");
-const title = document.querySelector(".modal-addpictures #title");
-const category = document.querySelector(".modal-addpictures #category");
-
+function reload() {
+  window.location.reload(true);
+}
+// ajout des images
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const token = localStorage.getItem("token");
   if (!token) {
     console.error("Token non trouvé, impossible de continuer.");
     return;
   }
-  const formData = new FormData();
-  formData.append("id", 0);
-  formData.append("title", "string");
-  formData.append("imageUrl", "String");
-  formData.append("categoryId", "string");
-  formData.append("userId", 0);
+
+  const formData = new FormData(e.target);
 
   try {
     const response = await fetch(`http://localhost:5678/api/works`, {
@@ -200,12 +209,15 @@ form.addEventListener("submit", async (e) => {
     if (!response.ok) {
       throw new Error(`Erreur : ${response.status} ${response.statusText}`);
     }
-
     const data = await response.json();
-    console.log(data);
-    console.log("Voici l'image ajoutée", data);
-    getworks();
-    displayimages();
+    btnValider.addEventListener("click", async () => {
+      if (data.ok) {
+        getworks();
+        displayimages();
+        reload();
+      }
+      console.log("Voici l'image ajoutée", data);
+    });
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'image:", error);
   }
@@ -213,7 +225,7 @@ form.addEventListener("submit", async (e) => {
 
 // change le btn en vert quand le formulaire est remplit ( ne fonctionne pas !!)
 function verifFormCompleted() {
-  const btnValider = document.querySelector(".container-button button");
+  const btnValider = document.querySelector(".button-valider");
   const labelFileAjt = document.querySelector(".fa-image");
   form.addEventListener("input", () => {
     if (
@@ -227,24 +239,44 @@ function verifFormCompleted() {
     }
   });
 }
-verifFormCompleted();
-// cacher éléments
-
-const affichage = document.querySelector("#affichage");
-const login = document.querySelector(".login");
 
 function affichageCo() {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    console.error("Token non trouvé, impossible de continuer.");
-    return;
-  }
-  if (token) {
+  if (isAdmin) {
     login.innerHTML = "logout";
     affichage.style.display = "block";
+    affichage1.style.display = "flex";
+    filter.classList.remove("filters");
+    filter.removeChild(btn_Filter);
     console.log("Ça fonctionne", token);
   } else {
+    console.error("Token non trouvé, impossible de continuer.");
     affichage.style.display = "none";
+    affichage1.style.display = "none";
+    headers.style.margin = "40px 0px 50px";
+    return;
   }
 }
+
+function deleteTokenFromLocalStorage() {
+  if (login) {
+    login.addEventListener("click", () => {
+      login.innerHTML = "login";
+      localStorage.removeItem("token");
+      window.location.assign = "../FrontEnd/index.html";
+    });
+  } else {
+    console.error("L'élément avec l'ID 'login' n'a pas été trouvé.");
+  }
+}
+
+// Appelez la fonction pour attacher l'écouteur d'événement
+deleteTokenFromLocalStorage();
+
+// Utilisation
+
+displayAddModall();
+pictureModal();
+displayCategoryModal();
+verifFormCompleted();
+// cacher éléments
 affichageCo();
