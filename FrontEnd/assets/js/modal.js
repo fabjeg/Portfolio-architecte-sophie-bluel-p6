@@ -182,10 +182,6 @@ async function displayCategoryModal() {
     }
   });
 }
-
-function reload() {
-  window.location.reload(true);
-}
 // ajout des images
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -210,13 +206,13 @@ form.addEventListener("submit", async (e) => {
       throw new Error(`Erreur : ${response.status} ${response.statusText}`);
     }
     const data = await response.json();
-    btnValider.addEventListener("click", async () => {
+    console.log("Voici l'image ajoutée", data);
+    btnValider.addEventListener("commit", function () {
       if (data.ok) {
+        location.reload();
         getworks();
         displayimages();
-        reload();
       }
-      console.log("Voici l'image ajoutée", data);
     });
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'image:", error);

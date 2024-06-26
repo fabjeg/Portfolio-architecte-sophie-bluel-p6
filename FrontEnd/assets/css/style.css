@@ -343,7 +343,19 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
+  animation: descend-modal 1s ease-in-out;
 }
+@keyframes descend-modal {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .modal-wrapper {
   border: 1px solid white;
   overflow: auto;
