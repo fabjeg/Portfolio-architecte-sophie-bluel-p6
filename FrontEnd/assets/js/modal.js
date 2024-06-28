@@ -228,7 +228,7 @@ function verifFormCompleted() {
   form.addEventListener("input", () => {
     console.log(myPicture.src);
     const myFormIsValid =
-      myPicture.src !==
+      myPicture.src.data !==
         "file:///C:/Users/Jego/openclassroom/Portfolio-architecte-sophie-bluel/frontEnd/index.html" &&
       title.value !== "" &&
       category.value !== "";
