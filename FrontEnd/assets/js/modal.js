@@ -207,13 +207,14 @@ form.addEventListener("submit", async (e) => {
     }
     const data = await response.json();
     console.log("Voici l'image ajoutée", data);
-    btnValider.addEventListener("commit", function () {
-      if (data.ok) {
-        location.reload();
-        getworks();
-        displayimages();
-      }
-    });
+    console.log("i'm ok", data.ok);
+    if (data) {
+      console.log("i'm ok inside", data.k);
+
+      location.reload();
+      getworks();
+      displayimages();
+    }
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'image:", error);
   }
@@ -222,16 +223,24 @@ form.addEventListener("submit", async (e) => {
 // change le btn en vert quand le formulaire est remplit ( ne fonctionne pas !!)
 function verifFormCompleted() {
   const btnValider = document.querySelector(".button-valider");
-  const labelFileAjt = document.querySelector(".fa-image");
+  const myPicture = document.getElementById("myPicture");
+
   form.addEventListener("input", () => {
-    if (
-      !labelFileAjt.value == "" &&
-      !title.value === "" &&
-      !category.value == ""
-    ) {
-      btnValider.classList.remove("valide");
-    } else {
+    console.log(myPicture.src);
+    const myFormIsValid =
+      myPicture.src !==
+        "file:///C:/Users/Jego/openclassroom/Portfolio-architecte-sophie-bluel/frontEnd/index.html" &&
+      title.value !== "" &&
+      category.value !== "";
+
+    console.log("myPicture.src ===>", myPicture.src);
+    console.log("title.value ===>", title.value);
+    console.log("category.value ===>", category.value);
+
+    if (myFormIsValid) {
       btnValider.classList.add("valide");
+    } else {
+      btnValider.classList.remove("valide");
     }
   });
 }

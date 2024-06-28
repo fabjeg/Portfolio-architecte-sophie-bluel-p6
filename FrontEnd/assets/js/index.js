@@ -1,8 +1,10 @@
+const myToken = localStorage.getItem("token");
+const isAdmin2 = myToken?.length > 0 ? true : false;
+
 async function getworks() {
   const response = await fetch("http://localhost:5678/api/works");
   return await response.json();
 }
-getworks();
 //parcour le tableau
 async function displayimages() {
   const pictures = await getworks();
@@ -10,7 +12,6 @@ async function displayimages() {
     imgWorks(pictures);
   });
 }
-displayimages();
 //affichage
 function imgWorks(pictures) {
   const figure = document.createElement("figure");
@@ -27,7 +28,6 @@ async function arrayCategorys() {
   const filter = await fetch("http://localhost:5678/api/categories");
   return await filter.json();
 }
-arrayCategorys();
 //ajoute les btn
 async function displayCategorysBtn() {
   const category = await arrayCategorys();
@@ -39,7 +39,6 @@ async function displayCategorysBtn() {
     document.querySelector(".filters").appendChild(btn);
   });
 }
-displayCategorysBtn();
 //try les images
 async function filterCategory() {
   const picturesArray = await getworks();
@@ -62,4 +61,13 @@ async function filterCategory() {
     });
   });
 }
+
+
+
+// Main 
+
+getworks();
+displayimages();
+arrayCategorys();
+isAdmin2 ? null: displayCategorysBtn();
 filterCategory();
