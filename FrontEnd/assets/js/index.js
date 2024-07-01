@@ -63,11 +63,3 @@ async function filterCategory() {
     });
   });
 }
-
-// Main
-
-getworks();
-displayimages();
-arrayCategorys();
-isAdmin2 ? null : displayCategorysBtn();
-filterCategory();

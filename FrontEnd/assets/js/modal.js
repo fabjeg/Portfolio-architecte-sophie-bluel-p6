@@ -36,6 +36,7 @@ const filter = document.querySelector(".filters");
 const btn_Filter = document.querySelector(".filters button");
 const mesProjets = document.querySelector("#portfolio h2");
 
+//ouvre le modal
 const openModal = function (e) {
   e.preventDefault();
   const target = document.querySelector(e.target.getAttribute("href"));
@@ -80,7 +81,7 @@ window.addEventListener("keydown", function (e) {
     closeModal(e);
   }
 });
-
+//aff img modal
 async function pictureModal() {
   addPictures.innerHTML = "";
   const modalPictures = await getworks();
@@ -133,7 +134,7 @@ function deletePictures() {
     });
   });
 }
-
+//second modal gère les icones et ajout photos
 function displayAddModall() {
   btnAjoutPhoto.addEventListener("click", () => {
     modaladdpictures.style.display = "flex";
@@ -167,6 +168,7 @@ inputFile.addEventListener("change", () => {
     reader.readAsDataURL(file);
   }
 });
+//ajout des catégories
 async function displayCategoryModal() {
   const select = document.querySelector("select");
   let categoriesPopulated = false;
@@ -222,7 +224,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// change le btn en vert quand le formulaire est remplit ( ne fonctionne pas !!)
+// change le btn en vert quand le formulaire est remplit
 function verifFormCompleted() {
   const btnValider = document.querySelector(".button-valider");
   const myPicture = document.getElementById("myPicture");
@@ -246,7 +248,7 @@ function verifFormCompleted() {
     }
   });
 }
-
+//aff si connexion
 function affichageCo() {
   if (isAdmin) {
     login.innerHTML = "logout";
@@ -264,7 +266,7 @@ function affichageCo() {
     return;
   }
 }
-
+//suprime le token
 function deleteTokenFromLocalStorage() {
   if (login) {
     login.addEventListener("click", () => {
@@ -277,14 +279,17 @@ function deleteTokenFromLocalStorage() {
   }
 }
 
-// Appelez la fonction pour attacher l'écouteur d'événement
-deleteTokenFromLocalStorage();
-
-// Utilisation
-
-displayAddModall();
-pictureModal();
-displayCategoryModal();
-verifFormCompleted();
-// cacher éléments
-affichageCo();
+function main() {
+  displayAddModall();
+  pictureModal();
+  displayCategoryModal();
+  verifFormCompleted();
+  affichageCo();
+  deleteTokenFromLocalStorage();
+  getworks();
+  displayimages();
+  arrayCategorys();
+  isAdmin2 ? null : displayCategorysBtn();
+  filterCategory();
+}
+main();
