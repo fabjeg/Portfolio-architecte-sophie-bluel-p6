@@ -20,7 +20,9 @@ document
         const token = data.token;
         localStorage.setItem("token", token);
         window.location.href = "../frontEnd/index.html";
-      } else if (response.status === 404) {
+      } else if (response.status === 404 || response.status === 401) {
+        email.textContent = "utilisateur ou mot de passe incorrect.  ";
+        password.textContent = "utilisateur ou mot de passe incorrect.  ";
         messageErreur.textContent = "utilisateur ou mot de passe incorrect.  ";
       }
     } catch (e) {
