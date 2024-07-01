@@ -55,8 +55,8 @@
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
+          <li><a href="#projet">projets</a></li>
+          <li><a href="#contact-2">contact</a></li>
           <li>
             <a
               href="../FrontEnd/login.html"
@@ -102,7 +102,7 @@
       </section>
       <section id="portfolio">
         <div class="container">
-          <h2>Mes Projets</h2>
+          <h2 id="#projet">Mes Projets</h2>
           <div id="affichage">
             <i class="fa-regular fa-pen-to-square"></i>
             <a
@@ -143,7 +143,7 @@
                 <span><i class="fa-solid fa-xmark fa-xmark2"></i></span>
                 <span><i class="fa-solid fa-arrow-left"></i></span>
                 <h4>Ajout photo</h4>
-                <form>
+                <form class="form-modal">
                   <div class="input-modal container-file">
                     <span><i class="fa-solid fa-image"></i></span>
                     <label
@@ -205,6 +205,7 @@
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
         <form
+          id="contact-2"
           action="#"
           method="post"
         >

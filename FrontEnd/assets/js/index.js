@@ -12,6 +12,7 @@ async function displayimages() {
     imgWorks(pictures);
   });
 }
+
 //affichage
 function imgWorks(pictures) {
   const figure = document.createElement("figure");
@@ -28,6 +29,7 @@ async function arrayCategorys() {
   const filter = await fetch("http://localhost:5678/api/categories");
   return await filter.json();
 }
+
 //ajoute les btn
 async function displayCategorysBtn() {
   const category = await arrayCategorys();
@@ -62,12 +64,10 @@ async function filterCategory() {
   });
 }
 
-
-
-// Main 
+// Main
 
 getworks();
 displayimages();
 arrayCategorys();
-isAdmin2 ? null: displayCategorysBtn();
+isAdmin2 ? null : displayCategorysBtn();
 filterCategory();

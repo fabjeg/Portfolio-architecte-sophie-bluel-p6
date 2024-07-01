@@ -34,6 +34,7 @@ const pFile = document.querySelector(".container-file p");
 const headers = document.querySelector("header");
 const filter = document.querySelector(".filters");
 const btn_Filter = document.querySelector(".filters button");
+const mesProjets = document.querySelector("#portfolio h2");
 
 const openModal = function (e) {
   e.preventDefault();
@@ -122,6 +123,7 @@ function deletePictures() {
           init
         );
         if (response.ok) {
+          location.reload();
           getworks();
           pictureModal();
         }
@@ -252,6 +254,7 @@ function affichageCo() {
     affichage1.style.display = "flex";
     filter.classList.remove("filters");
     filter.removeChild(btn_Filter);
+    mesProjets.style.margin = "0px 0px 30px 0px";
     console.log("Ça fonctionne", token);
   } else {
     console.error("Token non trouvé, impossible de continuer.");

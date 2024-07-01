@@ -173,8 +173,11 @@ nav li {
   padding: 0 10px;
   font-size: 1.2em;
 }
-
-li:hover {
+li a {
+  text-decoration: none;
+  color: #000000;
+}
+li a:hover {
   color: #b1663c;
 }
 #introduction {
@@ -208,7 +211,6 @@ li:hover {
 }
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 1em;
 }
 .gallery {
   width: 100%;
@@ -251,7 +253,6 @@ li:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
@@ -298,7 +299,7 @@ button {
   gap: 10px;
   margin: 51px;
 }
-.login {
+.login a {
   padding: 0 10px;
   text-decoration: none;
   color: black;
@@ -469,14 +470,14 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-form {
+.form-modal {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 80%;
+  height: 85%;
   width: 80%;
   gap: 10px;
-  margin-left: 100px;
+  align-content: space-around;
+  flex-wrap: wrap;
   overflow: auto;
 }
 .container-file {
@@ -498,6 +499,7 @@ form {
   display: none;
   width: 150px;
   height: 150px;
+  overflow: auto;
 }
 .label2 {
   width: 173px;
