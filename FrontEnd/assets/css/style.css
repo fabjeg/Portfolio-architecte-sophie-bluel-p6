@@ -319,7 +319,6 @@ button {
 .container a {
   margin-left: 10px;
   position: relative;
-  bottom: 14px;
   text-decoration: none;
   color: black;
   font-family: Work Sans;
@@ -330,7 +329,6 @@ button {
 
 .fa-regular {
   position: relative;
-  bottom: 14px;
   margin-left: 20px;
 }
 /*modal*/

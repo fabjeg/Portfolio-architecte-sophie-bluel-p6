@@ -21,7 +21,6 @@ const modalImg = document.querySelector(".modal-wrapper");
 const arrowReturn = document.querySelector(".fa-arrow-left");
 const deleteMark = document.querySelector(".modal-addpictures .fa-xmark");
 const btnValider = document.querySelector(".button-valider");
-console.log(btnValider);
 
 //insérer les images
 
@@ -211,10 +210,7 @@ form.addEventListener("submit", async (e) => {
     }
     const data = await response.json();
     console.log("Voici l'image ajoutée", data);
-    console.log("i'm ok", data.ok);
     if (data) {
-      console.log("i'm ok inside", data.k);
-
       location.reload();
       getworks();
       displayimages();
@@ -256,7 +252,7 @@ function affichageCo() {
     affichage1.style.display = "flex";
     filter.classList.remove("filters");
     filter.removeChild(btn_Filter);
-    mesProjets.style.margin = "0px 0px 30px 0px";
+    mesProjets.style.margin = "89px 0px 92px";
     console.log("Ça fonctionne", token);
   } else {
     console.error("Token non trouvé, impossible de continuer.");
