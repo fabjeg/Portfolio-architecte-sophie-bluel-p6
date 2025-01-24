@@ -6,7 +6,7 @@ const affichage = document.querySelector("#affichage");
 const affichage1 = document.querySelector("#affichage1");
 const login = document.querySelector(".login");
 
-//ajouter une photo (ne fonctionne pas !!!!!)
+//ajouter une photo 
 const form = document.querySelector(".modal-addpictures form");
 const title = document.querySelector(".modal-addpictures #title");
 const category = document.querySelector(".modal-addpictures #category");
