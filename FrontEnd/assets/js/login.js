@@ -19,7 +19,7 @@ document
         const data = await response.json();
         const token = data.token;
         localStorage.setItem("token", token);
-        window.location.href = "../frontEnd/index.html";
+        window.location.href = "index.html";
       } else if (response.status === 404 || response.status === 401) {
         email.textContent = "utilisateur ou mot de passe incorrect.  ";
         password.textContent = "utilisateur ou mot de passe incorrect.  ";
